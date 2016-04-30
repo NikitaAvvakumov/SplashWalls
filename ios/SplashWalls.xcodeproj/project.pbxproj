@@ -14,7 +14,8 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* SplashWallsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SplashWallsTests.m */; };
 		111A406B1CD418680078421B /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 111A406A1CD4183A0078421B /* libART.a */; };
-		112603D21CD4B2F200D8B222 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112603D11CD4B2C000D8B222 /* libRCTCameraRoll.a */; };
+		112603E61CD4BBDE00D8B222 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112603E51CD4BBD400D8B222 /* libRCTCameraRoll.a */; };
+		11A8412F1CD53CD600CE9499 /* libRNShakeEvent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A8412E1CD53CCD00CE9499 /* libRNShakeEvent.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -76,12 +77,19 @@
 			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
 			remoteInfo = ART;
 		};
-		112603D01CD4B2C000D8B222 /* PBXContainerItemProxy */ = {
+		112603E41CD4BBD400D8B222 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 112603CC1CD4B2C000D8B222 /* RCTCameraRoll.xcodeproj */;
+			containerPortal = 112603E01CD4BBD400D8B222 /* RCTCameraRoll.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
 			remoteInfo = RCTCameraRoll;
+		};
+		11A8412D1CD53CCD00CE9499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11A8411D1CD53CCD00CE9499 /* RNShakeEvent.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNShakeEvent;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -131,7 +139,8 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SplashWallsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashWallsTests.m; sourceTree = "<group>"; };
 		111A40651CD4183A0078421B /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
-		112603CC1CD4B2C000D8B222 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "/Users/Nikita/coding/react/SplashWalls/node_modules/react-native/Libraries/ActionSheetIOS/../CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<absolute>"; };
+		112603E01CD4BBD400D8B222 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
+		11A8411D1CD53CCD00CE9499 /* RNShakeEvent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNShakeEvent.xcodeproj; path = "../node_modules/react-native-shake-event-ios/RNShakeEvent.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SplashWalls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplashWalls.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,10 +167,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A8412F1CD53CD600CE9499 /* libRNShakeEvent.a in Frameworks */,
+				112603E61CD4BBDE00D8B222 /* libRCTCameraRoll.a in Frameworks */,
 				111A406B1CD418680078421B /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
-				112603D21CD4B2F200D8B222 /* libRCTCameraRoll.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
@@ -241,10 +251,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		112603CD1CD4B2C000D8B222 /* Products */ = {
+		112603E11CD4BBD400D8B222 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				112603D11CD4B2C000D8B222 /* libRCTCameraRoll.a */,
+				112603E51CD4BBD400D8B222 /* libRCTCameraRoll.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		11A8411E1CD53CCD00CE9499 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				11A8412E1CD53CCD00CE9499 /* libRNShakeEvent.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,9 +316,10 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				11A8411D1CD53CCD00CE9499 /* RNShakeEvent.xcodeproj */,
+				112603E01CD4BBD400D8B222 /* RCTCameraRoll.xcodeproj */,
 				111A40651CD4183A0078421B /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
-				112603CC1CD4B2C000D8B222 /* RCTCameraRoll.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
 				00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */,
@@ -388,7 +407,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -421,8 +440,8 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
-					ProductGroup = 112603CD1CD4B2C000D8B222 /* Products */;
-					ProjectRef = 112603CC1CD4B2C000D8B222 /* RCTCameraRoll.xcodeproj */;
+					ProductGroup = 112603E11CD4BBD400D8B222 /* Products */;
+					ProjectRef = 112603E01CD4BBD400D8B222 /* RCTCameraRoll.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -459,6 +478,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 11A8411E1CD53CCD00CE9499 /* Products */;
+					ProjectRef = 11A8411D1CD53CCD00CE9499 /* RNShakeEvent.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -512,11 +535,18 @@
 			remoteRef = 111A40691CD4183A0078421B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		112603D11CD4B2C000D8B222 /* libRCTCameraRoll.a */ = {
+		112603E51CD4BBD400D8B222 /* libRCTCameraRoll.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTCameraRoll.a;
-			remoteRef = 112603D01CD4B2C000D8B222 /* PBXContainerItemProxy */;
+			remoteRef = 112603E41CD4BBD400D8B222 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		11A8412E1CD53CCD00CE9499 /* libRNShakeEvent.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNShakeEvent.a;
+			remoteRef = 11A8412D1CD53CCD00CE9499 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
@@ -648,6 +678,7 @@
 				INFOPLIST_FILE = SplashWallsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplashWalls.app/SplashWalls";
 			};
@@ -665,6 +696,7 @@
 				INFOPLIST_FILE = SplashWallsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplashWalls.app/SplashWalls";
 			};
@@ -727,6 +759,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
