@@ -1,7 +1,8 @@
-var Swiper = require("react-native-swiper");
-var RandManager = require("./RandManager.js");
 var NetworkImage = require("react-native-image-progress");
 var Progress = require("react-native-progress");
+var Swiper = require("react-native-swiper");
+var RandManager = require("./RandManager.js");
+var Utils = require("./Utils.js");
 
 import React, {
   AppRegistry,
@@ -10,11 +11,16 @@ import React, {
   Text,
   View,
   ActivityIndicatorIOS,
-  Dimensions
+  Dimensions,
+  PanResponder,
+  CameraRoll,
+  AlertIOS,
 } from 'react-native';
 
 var {width, height} = Dimensions.get("window");
 const NUM_OF_WALLPAPERS = 5;
+const DOUBLE_TAP_DELAY = 300; // milliseconds
+const DOUBLE_TAP_RADIUS = 20;
 
 class SplashWalls extends Component {
     constructor(props) {
@@ -24,10 +30,103 @@ class SplashWalls extends Component {
             wallsJSON: [],
             isLoading: true
         };
+        this.imagePanResponder = {};
+        this.currentWallpaperIndex = 0;
+        this.previousTouchInfo = {
+            previousTouchX: 0,
+            previousTouchY: 0,
+            previousTouchTimeStamp: 0
+        }
+        this.handlePanResponderGrant = this.handlePanResponderGrant.bind(this);
+        this.onMomentumScrollEnd = this.onMomentumScrollEnd.bind(this);
+    }
+
+    componentWillMount() {
+        this.imagePanResponder = PanResponder.create({
+            onStartShouldSetPanResponder: this.handleStartShouldSetPanResponder,
+            onPanResponderGrant: this.handlePanResponderGrant,
+            onPanResponderRelease: this.handlePanResponderEnd,
+            onPanResponderTerminat: this.handlePanResponderEnd
+        });
+    }
+
+    handleStartShouldSetPanResponder(e, gestureState) {
+        return true;
+    }
+
+    handlePanResponderGrant(e, gestureState) {
+        var currentTouchTimeStamp = Date.now();
+
+        if (this.isDoubleTap(currentTouchTimeStamp, gestureState)) {
+            this.saveCurrentWallpaperToCameraRoll();
+        }
+
+        this.previousTouchInfo = {
+            previousTouchX: gestureState.x0,
+            previousTouchY: gestureState.y0,
+            previousTouchTimeStamp: currentTouchTimeStamp
+        }
+    }
+
+    isDoubleTap(currentTouchTimeStamp, {x0, y0}) {
+        var {previousTouchX, previousTouchY, previousTouchTimeStamp} = this.previousTouchInfo;
+        var timeDelta = currentTouchTimeStamp - previousTouchTimeStamp;
+        var temporallyClose = timeDelta < DOUBLE_TAP_DELAY;
+        var spatiallyClose = Utils.distance(previousTouchX, previousTouchY, x0, y0) < DOUBLE_TAP_RADIUS;
+
+        return (temporallyClose && spatiallyClose);
+    }
+
+    saveCurrentWallpaperToCameraRoll() {
+        var {wallsJSON} = this.state;
+        var currentWallpaper = wallsJSON[this.currentWallpaperIndex];
+        var currentWallpaperURL = `https://unsplash.it/${currentWallpaper.width}/${currentWallpaper.height}?image=${currentWallpaper.id}`;
+
+        CameraRoll.saveImageWithTag(currentWallpaperURL)
+        .then((data) => {
+            console.log("Saved");
+        });
+
+        // CameraRoll.saveImageWithTag(currentWallpaperURL)
+        // .then((data) => {
+        //     AlertIOS.alert(
+        //         "Saved",
+        //         "Wallpaper successfully saved to Camera Roll",
+        //         [
+        //             {text: "High 5!", onPress: () => console.log("OK Pressed!")}
+        //         ]
+        //     );
+        // })
+        // .catch(err => {
+        //     console.error("Error saving to camera roll", err);
+        // })
+
+        // CameraRoll.saveImageWithTag(currentWallpaperURL)
+        //     .then((data) => {
+        //         console.log("Image saved");
+        //         AlertIOS.alert(
+        //             "Saved",
+        //             "Wallpaper saved to CameraRoll",
+        //             [
+        //                 {text: "Roger", onPress: () => console.log("OK pressed")}
+        //             ]
+        //         );
+        //     })
+        //     .catch(error => {
+        //         console.error("Error saving to CameraRoll", error);
+        //     });
+    }
+
+    handlePanResponderEnd(e, gestureState) {
+        // nothing to do here
     }
 
     componentDidMount() {
         this.fetchWallsJSON();
+    }
+
+    onMomentumScrollEnd(e, state, context) {
+        this.currentWallpaperIndex = state.index;
     }
 
     fetchWallsJSON() {
@@ -82,7 +181,9 @@ class SplashWalls extends Component {
                                         size: 60,
                                         thickness: 7
                                     }}
-                                    style={styles.wallpaperImage}>
+                                    style={styles.wallpaperImage}
+                                    {...this.imagePanResponder.panHandlers}
+                                >
                                     <Text style={styles.label}>Photo by</Text>
                                     <Text style={styles.label_authorName}>{wallpaper.author}</Text>
                                 </NetworkImage>
